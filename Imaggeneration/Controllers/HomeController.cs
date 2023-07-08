@@ -73,6 +73,5 @@ namespace YourNamespace.Controllers
 
             return View("Index");
         }
-
     }
 }
