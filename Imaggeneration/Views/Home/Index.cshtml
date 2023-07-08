@@ -5,25 +5,46 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Generate Image</title>
+    <title>Generate Image and Variations</title>
 </head>
 <body>
-    <h1>Generate Image</h1>
+    <h1>Generate Image and Variations</h1>
 
+    <h2>Image Generation</h2>
     <form method="post" action="/Home/GenerateImage">
         <div>
             <label for="prompt">Prompt:</label>
             <input type="text" id="prompt" name="prompt" />
         </div>
         <div>
-            <input type="submit" value="Generate" />
+            <input type="submit" value="Generate Image" />
         </div>
     </form>
 
     @if (ViewBag.ImageUrl != null)
     {
-        <h2>Generated Image:</h2>
+        <h3>Generated Image:</h3>
         <img src="@ViewBag.ImageUrl" alt="Generated Image" />
+    }
+
+    <h2>Image Variation Generation</h2>
+    <form method="post" action="/Home/GenerateImage" enctype="multipart/form-data">
+        <div>
+            <label for="imageFile">Select Image:</label>
+            <input type="file" id="imageFile" name="imageFile" />
+        </div>
+        <div>
+            <input type="submit" value="Generate Variations" />
+        </div>
+    </form>
+
+    @if (ViewBag.ImageVariations != null)
+    {
+        <h3>Generated Image Variations:</h3>
+        @foreach (var variationUrl in ViewBag.ImageVariations)
+        {
+            <img src="@variationUrl" alt="Image Variation" />
+        }
     }
 </body>
 </html>
