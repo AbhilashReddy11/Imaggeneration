@@ -1,0 +1,29 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate Image</title>
+</head>
+<body>
+    <h1>Generate Image</h1>
+
+    <form method="post" action="/Home/GenerateImage">
+        <div>
+            <label for="prompt">Prompt:</label>
+            <input type="text" id="prompt" name="prompt" />
+        </div>
+        <div>
+            <input type="submit" value="Generate" />
+        </div>
+    </form>
+
+    @if (ViewBag.ImageUrl != null)
+    {
+        <h2>Generated Image:</h2>
+        <img src="@ViewBag.ImageUrl" alt="Generated Image" />
+    }
+</body>
+</html>
